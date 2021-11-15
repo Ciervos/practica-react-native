@@ -4,12 +4,14 @@ import { StyleSheet, Text, View,Button } from 'react-native';
 import items from './constants/items';
 import colors from './constants/colors';
 import ItemList from './components/Lists/itemList';
+import MsgModal from './components/Modal/MsgModal';
 
 export default function App() {
   const [inventory,setInventory] = useState([{id:221,name:'Libro Solar', image: items.sunbook,type: 'book',power: 'fire', selected:false},{id:222,name:'Libro Aqua', image: items.waterbook,type: 'book',power: 'water', selected:false},{id:223,name:'Libro Fuego', image: items.firebook,type: 'book',power: 'fire',selected:false}]);
   const [backpack,setBackpack] = useState([])
+  const [modalVisible,setModalVisible] = useState(false)
   
-
+//Función Selecionar items
   const handleSelected = (item) =>{
 
     if(item.selected){
@@ -48,6 +50,18 @@ export default function App() {
 
    } 
 
+  //Función boton
+  const handlePress =()=>{
+    if(backpack.length!==3){
+      setModalVisible(true)
+    }else{
+      console.log("lógica pantalla") 
+    }
+  }
+
+  const handleModalOk = () =>{
+    setModalVisible(false)
+  }
 
   return (
     <View style={styles.container}>
@@ -55,11 +69,11 @@ export default function App() {
       <View>
       <Button 
        title="Iniciar aventura"
-       onPress={false}
+       onPress={handlePress}
        color={colors.color2}/>
         </View>
       <ItemList inventory={inventory} handleSelected={handleSelected}/>
-      
+      <MsgModal modalVisible={modalVisible} handleModalOk={handleModalOk}/>
     </View>
   );
 }

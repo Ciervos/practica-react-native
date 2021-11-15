@@ -1,5 +1,5 @@
 export default{
-    color1: '#A9D6E5',
+    color1: '#DCF763',
     color2: '#61A5C2',
     color3: '#2C7DA0',
     color4: '#014F86',
