@@ -1,81 +1,41 @@
-import { StatusBar } from 'expo-status-bar';
 import React,{useState} from 'react';
 import { StyleSheet, Text, View,Button } from 'react-native';
 import items from './constants/items';
 import colors from './constants/colors';
-import ItemList from './components/Lists/itemList';
-import MsgModal from './components/Modal/MsgModal';
+import StartGameScreen from './screens/StartGameScreen';
+import GameScreen from './screens/GameScreen';
+import { useFonts } from 'expo-font';
+import AppLoading from 'expo-app-loading';
+
+const FONT_DEFAULT = 'PressStart2P';
 
 export default function App() {
-  const [inventory,setInventory] = useState([{id:221,name:'Libro Solar', image: items.sunbook,type: 'book',power: 'fire', selected:false},{id:222,name:'Libro Aqua', image: items.waterbook,type: 'book',power: 'water', selected:false},{id:223,name:'Libro Fuego', image: items.firebook,type: 'book',power: 'fire',selected:false}]);
-  const [backpack,setBackpack] = useState([])
-  const [modalVisible,setModalVisible] = useState(false)
-  
-//Función Selecionar items
-  const handleSelected = (item) =>{
+  const [loaded] = useFonts({
+    [FONT_DEFAULT]: require('./assets/fonts/PressStart2P-Regular.ttf'),
+  });
 
-    if(item.selected){
+const [startAdventure,setStartAdventure] = useState(false)
+const [ourBackpack,setOurBackpack] = useState()
 
-      const newbackpack = backpack.filter(currItem=> currItem.id !== item.id)
+if (!loaded) return <AppLoading />;
 
-      setBackpack(newbackpack)
+const handleStartGame = backpack =>{
+   
+  setOurBackpack(backpack)
+  setStartAdventure(true)
+}
 
-    }else{
-      const newitem={
-      id: item.id,
-      name: item.name,
-      image: item.image,
-      type: item.type,
-      power: item.power,
-   }; 
-    setBackpack([
-      ...backpack,
-      newitem,
-    ]);
-   }
-      
-   const newinventory = inventory.map((currItem)=>{
-      if(item.id===currItem.id){
-       return{
-         ...currItem,
-         selected: !currItem.selected
-       }
-      }
+const handleComeBack = () =>{
+  setStartAdventure(false)
+}
 
-      return currItem;
-      
-    })   
+const content = startAdventure ? <GameScreen backpack={ourBackpack} handleComeBack={handleComeBack}/> : <StartGameScreen onStartGame={handleStartGame} />
 
-    setInventory(newinventory)
-
-   } 
-
-  //Función boton
-  const handlePress =()=>{
-    if(backpack.length!==3){
-      setModalVisible(true)
-    }else{
-      console.log("lógica pantalla") 
-    }
-  }
-
-  const handleModalOk = () =>{
-    setModalVisible(false)
-  }
-
-  return (
-    <View style={styles.container}>
-      <Text>Para pasar a la siguiente pantalla necesitas seleccionar 3 items distintos</Text>
-      <View>
-      <Button 
-       title="Iniciar aventura"
-       onPress={handlePress}
-       color={colors.color2}/>
-        </View>
-      <ItemList inventory={inventory} handleSelected={handleSelected}/>
-      <MsgModal modalVisible={modalVisible} handleModalOk={handleModalOk}/>
-    </View>
-  );
+return(
+  <View style={styles.container}>
+    {content}
+  </View>
+)
 }
 
 const styles = StyleSheet.create({

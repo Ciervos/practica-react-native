@@ -1,14 +1,18 @@
 
 import React,{useState} from 'react';
 import { StyleSheet, Text, View,TextInput,Button} from 'react-native';
-import colors from './constants/colors';
+import colors from '../constants/colors';
 
-const GameScreen = ()=> {
+const GameScreen = props => {
 
 
   return (
     <View style={styles.container}>
-
+      <Text style={styles.guide}> Lograste entrar a la pantalla de juego :D!</Text>
+      <Button 
+       title="Volver"
+       onPress={()=>props.handleComeBack()}
+       color={colors.color2}/>
     </View>
     
   );
@@ -22,6 +26,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
       },
+      guide:{
+        fontFamily: 'PressStart2P',
+        
+       },
   
 });
 
