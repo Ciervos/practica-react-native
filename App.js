@@ -6,6 +6,7 @@ import StartGameScreen from './screens/StartGameScreen';
 import GameScreen from './screens/GameScreen';
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
+import AppNavigator from './navigation/AppNavigator';
 
 const FONT_DEFAULT = 'PressStart2P';
 
@@ -14,27 +15,17 @@ export default function App() {
     [FONT_DEFAULT]: require('./assets/fonts/PressStart2P-Regular.ttf'),
   });
 
-const [startAdventure,setStartAdventure] = useState(false)
-const [ourBackpack,setOurBackpack] = useState()
+
 
 if (!loaded) return <AppLoading />;
 
-const handleStartGame = backpack =>{
-   
-  setOurBackpack(backpack)
-  setStartAdventure(true)
-}
 
-const handleComeBack = () =>{
-  setStartAdventure(false)
-}
 
-const content = startAdventure ? <GameScreen backpack={ourBackpack} handleComeBack={handleComeBack}/> : <StartGameScreen onStartGame={handleStartGame} />
+
 
 return(
-  <View style={styles.container}>
-    {content}
-  </View>
+
+  <AppNavigator/>
 )
 }
 

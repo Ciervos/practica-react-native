@@ -1,15 +1,14 @@
 
 import React,{useState} from 'react';
-import { StyleSheet, Text, View,TextInput,Button} from 'react-native';
+import { StyleSheet, Text, View,Button} from 'react-native';
 import colors from '../constants/colors';
 
-const GameScreen = props => {
+const RulesScreen = () => {
 
 
   return (
     <View style={styles.container}>
-      <Text style={styles.guide}> Lograste entrar a la pantalla de juego :D!</Text>
-
+     <Text>Pantalla de Reglas</Text>
     </View>
     
   );
@@ -23,11 +22,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
       },
-      guide:{
-        fontFamily: 'PressStart2P',
-        
-       },
+
   
 });
 
-export default GameScreen;
+export default RulesScreen;
