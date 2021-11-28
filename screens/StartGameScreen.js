@@ -78,11 +78,7 @@ const StartGameScreen = ({navigation}) =>{
        onPress={()=>{navigation.navigate('Rules')}}
        color={colors.color2}
        />
-        <Button 
-       title="Colección"
-       onPress={()=>{navigation.navigate('Collection')}}
-       color={colors.color2}
-       />
+
         </View>
       <ItemList inventory={inventory} handleSelected={handleSelected}/>
       <MsgModal modalVisible={modalVisible} handleModalOk={handleModalOk}/>
