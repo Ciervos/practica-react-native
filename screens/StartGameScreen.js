@@ -6,7 +6,7 @@ import colors from '../constants/colors';
 import ItemList from '../components/Lists/itemList';
 import MsgModal from '../components/Modal/MsgModal';
 
-const StartGameScreen = props =>{
+const StartGameScreen = ({navigation}) =>{
   const [inventory,setInventory] = useState([{id:221,name:'Libro Solar', image: items.sunbook,type: 'book',power: 'fire', selected:false},{id:222,name:'Libro Aqua', image: items.waterbook,type: 'book',power: 'water', selected:false},{id:223,name:'Libro Fuego', image: items.firebook,type: 'book',power: 'fire',selected:false}]);
   const [backpack,setBackpack] = useState([])
   const [modalVisible,setModalVisible] = useState(false)
@@ -55,10 +55,8 @@ const StartGameScreen = props =>{
     if(backpack.length!==3){
       setModalVisible(true)
     }else{
-      console.log("lógica pantalla") 
-      console.log(props)
-      props.onStartGame(backpack)
-
+       
+      navigation.navigate('Game')
     }
   }
 
@@ -69,10 +67,20 @@ const StartGameScreen = props =>{
   return (
     <View style={styles.container}>
       <Text style={styles.guide}>Para pasar a la siguiente pantalla necesitas seleccionar 3 items distintos</Text>
-      <View>
+      <View style={styles.buttons}>
       <Button 
        title="Iniciar aventura"
        onPress={handlePress}
+       color={colors.color2}
+       />
+        <Button 
+       title="Reglas"
+       onPress={()=>{navigation.navigate('Rules')}}
+       color={colors.color2}
+       />
+        <Button 
+       title="Colección"
+       onPress={()=>{navigation.navigate('Collection')}}
        color={colors.color2}
        />
         </View>
@@ -88,6 +96,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  buttons:{
+   flexDirection: 'row', 
+   padding: 5,
+   justifyContent: 'space-between',
+   width: "85%",
+  
   },
   guide:{
   fontFamily: 'PressStart2P',
