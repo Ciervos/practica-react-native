@@ -1,19 +1,23 @@
 
 import React,{useState} from 'react';
 import { StyleSheet, Text, View,Button } from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
+import {selectItem} from '../store/actions/items.actions';
 import items from '../constants/items';
 import colors from '../constants/colors';
 import ItemList from '../components/Lists/itemList';
 import MsgModal from '../components/Modal/MsgModal';
 
 const StartGameScreen = ({navigation}) =>{
-  const [inventory,setInventory] = useState([{id:221,name:'Libro Solar', image: items.sunbook,type: 'book',power: 'fire', selected:false},{id:222,name:'Libro Aqua', image: items.waterbook,type: 'book',power: 'water', selected:false},{id:223,name:'Libro Fuego', image: items.firebook,type: 'book',power: 'fire',selected:false}]);
+  //const [inventory,setInventory] = useState([{id:221,name:'Libro Solar', image: items.sunbook,type: 'book',power: 'fire', selected:false},{id:222,name:'Libro Aqua', image: items.waterbook,type: 'book',power: 'water', selected:false},{id:223,name:'Libro Fuego', image: items.firebook,type: 'book',power: 'fire',selected:false}]);
+  const dispatch = useDispatch();
+  const inventory = useSelector(state => state.items.items);
   const [backpack,setBackpack] = useState([])
   const [modalVisible,setModalVisible] = useState(false)
   
 //Función Selecionar items
   const handleSelected = (item) =>{
-
+    console.log(item)
     if(item.selected){
 
       const newbackpack = backpack.filter(currItem=> currItem.id !== item.id)
@@ -34,8 +38,8 @@ const StartGameScreen = ({navigation}) =>{
     ]);
    }
       
-   const newinventory = inventory.map((currItem)=>{
-      if(item.id===currItem.id){
+    const newinventory = inventory.map((currItem)=>{
+       if(item.id===currItem.id){
        return{
          ...currItem,
          selected: !currItem.selected
@@ -44,9 +48,13 @@ const StartGameScreen = ({navigation}) =>{
 
       return currItem;
       
-    })   
+     })   
 
-    setInventory(newinventory)
+  //dispatch(selectItem(item.id));
+    console.log(newinventory)
+    dispatch(selectItem(newinventory))
+
+    //setInventory(newinventory)
 
    } 
 

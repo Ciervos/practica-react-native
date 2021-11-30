@@ -8,6 +8,7 @@ export const ITEMS = [
       image: items.sunbook,
       type: 'book',
       power: 'fire',
+      selected: false,
     },
     {
       id: 2,
@@ -15,7 +16,8 @@ export const ITEMS = [
       description: 'Placeholder',
       image: items.waterbook,
       type: 'book',
-      power: 'water'  
+      power: 'water',
+      selected: false,  
     },
     {
       id: 3,
@@ -24,6 +26,7 @@ export const ITEMS = [
       image: items.firebook,
       type: 'book',
       power: 'fire',
+      selected: false,
 
     }
   ];

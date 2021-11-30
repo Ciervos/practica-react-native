@@ -1,4 +1,5 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
 import EnemyReducer from './reducers/enemies.reducer';
 import ItemsReducer from './reducers/items.reducer';
@@ -10,4 +11,4 @@ const RootReducer = combineReducers({
   character: CharacterReducer,
 });
 
-export default createStore(RootReducer);
+export default createStore(RootReducer,applyMiddleware(thunk));
