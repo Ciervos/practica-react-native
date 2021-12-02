@@ -1,0 +1,1 @@
+export const API_URL = 'https://minidungeon-24fd6-default-rtdb.firebaseio.com/'
