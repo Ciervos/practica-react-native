@@ -7,6 +7,7 @@ import items from '../constants/items';
 import colors from '../constants/colors';
 import ItemList from '../components/Lists/itemList';
 import MsgModal from '../components/Modal/MsgModal';
+import ProfilePic from '../components/ProfilePic/profilePic';
 
 const StartGameScreen = ({navigation}) =>{
   //const [inventory,setInventory] = useState([{id:221,name:'Libro Solar', image: items.sunbook,type: 'book',power: 'fire', selected:false},{id:222,name:'Libro Aqua', image: items.waterbook,type: 'book',power: 'water', selected:false},{id:223,name:'Libro Fuego', image: items.firebook,type: 'book',power: 'fire',selected:false}]);
@@ -74,6 +75,7 @@ const StartGameScreen = ({navigation}) =>{
 
   return (
     <View style={styles.container}>
+      <ProfilePic/>
       <Text style={styles.guide}>Para pasar a la siguiente pantalla necesitas seleccionar 3 items distintos</Text>
       <View style={styles.buttons}>
       <Button 
