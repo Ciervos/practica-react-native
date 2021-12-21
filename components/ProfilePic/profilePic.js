@@ -13,6 +13,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 import colors from '../../constants/colors';
 import { loadAvatar } from '../../store/actions/character.actions';
+import * as FileSystem from 'expo-file-system'
 
 function ProfilePic() {
     const dispatch = useDispatch();
@@ -61,16 +62,18 @@ function ProfilePic() {
        
         
         
+        const fileName = newavatar.uri.split('/').pop();
+        const Path = FileSystem.documentDirectory + fileName;
 
-        handleSave(newavatar.uri)
+        handleSave(newavatar.uri, Path)
         
       };
      
     
    
-    const handleSave = (saveme) => {
+    const handleSave = (saveme, newPath) => {
         dispatch(chooseAvatar(saveme));
-        
+        setPickedUri(newPath)
             
     }
 
