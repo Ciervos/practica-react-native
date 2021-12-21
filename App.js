@@ -8,6 +8,15 @@ import store from './store';
 
 const FONT_DEFAULT = 'PressStart2P';
 
+import { init } from './db';
+
+init()
+  .then(() => console.log('Database initialized'))
+  .catch(err => {
+    console.log('Database failed to connect')
+    console.log(err.message)
+  })
+
 export default function App() {
   const [loaded] = useFonts({
     [FONT_DEFAULT]: require('./assets/fonts/PressStart2P-Regular.ttf'),

@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {chooseAvatar} from '../../store/actions/character.actions';
 import {
@@ -12,16 +12,27 @@ import {
 import { MaterialIcons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 import colors from '../../constants/colors';
+import { loadAvatar } from '../../store/actions/character.actions';
 
 function ProfilePic() {
     const dispatch = useDispatch();
     const currAvatar = useSelector(state => state.character.avatar);
     const defaultAvatar = require('../../imgs/personajes/background/45.png')
     const [pickedUri, setPickedUri] = useState(null);
+    const [reload,setReload] = useState('');
+
+
+    //busca en la base de datos
+    useEffect(() => {
+      handleUpdate()
+      
+  }, []);
+
 
 
     const verifyPermissions = async () => {
         const { status } = await ImagePicker.requestCameraPermissionsAsync();
+        
     
         if (status !== 'granted') {
           Alert.alert(
@@ -41,16 +52,34 @@ function ProfilePic() {
         const isCameraOk = await verifyPermissions();
         if (!isCameraOk) return;
     
-        const image = await ImagePicker.launchCameraAsync({
+        const newavatar = await ImagePicker.launchCameraAsync({
           allowsEditing: true,
           aspect: [10,9],
           quality: 0.8,
         });
     
+       
         
-        setPickedUri(image.uri);
+        
+
+        handleSave(newavatar.uri)
+        
       };
+     
+    
    
+    const handleSave = (saveme) => {
+        dispatch(chooseAvatar(saveme));
+        
+            
+    }
+
+    const handleUpdate = async () =>{
+      dispatch(loadAvatar());
+      setPickedUri(currAvatar)
+
+    }
+
   return (
   <View style={styles.container}> 
      <View> 
@@ -58,15 +87,14 @@ function ProfilePic() {
           ? <Image source={{ uri: pickedUri }} style={styles.image} />
           : <Image source={defaultAvatar} style={styles.image} /> 
         } 
- 
+     
      <View style={styles.photoicon}>
      <TouchableOpacity onPress={handleTakePhoto}> 
      <MaterialIcons name="add-a-photo" size={24} color="white" />
      </TouchableOpacity>
      </View>
-    
+      
     </View>
-        
   </View>
   )
 }
