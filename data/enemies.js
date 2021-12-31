@@ -4,6 +4,7 @@ export const ENEMIES = [
       name: 'Placeholder',
       description: 'Placeholder',
       image: 'Placeholder',
-      weakness: []
+      weakness: [],
+      power: 1,
     }
   ];

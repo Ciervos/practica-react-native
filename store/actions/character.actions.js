@@ -45,8 +45,7 @@ export const loadAvatar = () => {
   return async dispatch => {
       try {
           const result = await fetchPlayerData()
-          console.log("result",result)
-          console.log("result2",result.rows._array[0].avatar)
+         
           dispatch({
               type: LOAD_AVATAR,
               avatar: result.rows._array[0].avatar

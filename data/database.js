@@ -1,1 +1,2 @@
-export const API_URL = 'https://minidungeon-24fd6-default-rtdb.firebaseio.com/'
+export const API_URL = 'https://tpchreactnative-default-rtdb.firebaseio.com/'
+

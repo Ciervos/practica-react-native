@@ -12,6 +12,7 @@ const ItemsReducer = (state = initialState, action) => {
       return {
         ...state,
         items: action.newinventory,
+        
       };
     default:
       return state;

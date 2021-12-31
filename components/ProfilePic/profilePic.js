@@ -13,7 +13,8 @@ import { MaterialIcons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 import colors from '../../constants/colors';
 import { loadAvatar } from '../../store/actions/character.actions';
-import * as FileSystem from 'expo-file-system'
+import * as FileSystem from 'expo-file-system';
+import {fetchPlayerData} from '../../db';
 
 function ProfilePic() {
     const dispatch = useDispatch();
@@ -24,7 +25,7 @@ function ProfilePic() {
 
 
     //busca en la base de datos
-    useEffect(() => {
+  useEffect(() => {
       handleUpdate()
       
   }, []);
@@ -79,9 +80,12 @@ function ProfilePic() {
 
     const handleUpdate = async () =>{
       dispatch(loadAvatar());
-      setPickedUri(currAvatar)
-
+      const result = await fetchPlayerData()
+      setPickedUri(result.rows._array[0].avatar)
+      //originariamente aqui se integraba setPickedUri(currAvatar) pero el mismo siempre traeria null y no la versión actualizada
+       
     }
+
 
   return (
   <View style={styles.container}> 
