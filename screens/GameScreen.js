@@ -1,9 +1,17 @@
 
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import { StyleSheet, Text, View,TextInput,Button} from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
 import colors from '../constants/colors';
 
 const GameScreen = props => {
+  const dispatch = useDispatch();
+  const mobs = useSelector(state => state.enemies.enemies);
+
+  useEffect(() => {
+    console.log(mobs)
+    console.log("prueba",mobs[0])
+}, []);
 
 
   return (
