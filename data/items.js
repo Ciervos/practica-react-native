@@ -28,5 +28,45 @@ export const ITEMS = [
       power: 'fire',
       selected: false,
 
+    },
+    {
+      id: 4,
+      name: 'Daga Solar',
+      description: 'Placeholder',
+      image: items.sundagger,
+      type: 'dagger',
+      power: 'fire',
+      selected: false,
+
+    },
+    {
+      id: 5,
+      name: 'Daga de Hoja',
+      description: 'Placeholder',
+      image: items.leafdagger,
+      type: 'dagger',
+      power: 'earth',
+      selected: false,
+
+    },
+    {
+      id: 6,
+      name: 'Hongo venenoso',
+      description: 'Placeholder',
+      image: items.poisonmushroom,
+      type: 'mushroom',
+      power: 'poison',
+      selected: false,
+
+    },
+    {
+      id: 7,
+      name: 'Hongo de fuego',
+      description: 'Placeholder',
+      image: items.firemushroom,
+      type: 'mushroom',
+      power: 'fire',
+      selected: false,
+
     }
   ];
