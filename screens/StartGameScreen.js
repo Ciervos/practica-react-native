@@ -18,7 +18,7 @@ const StartGameScreen = ({navigation}) =>{
   
 //Función Selecionar items
   const handleSelected = (item) =>{
-    console.log(item)
+    
     if(item.selected){
 
       const newbackpack = backpack.filter(currItem=> currItem.id !== item.id)
@@ -52,7 +52,7 @@ const StartGameScreen = ({navigation}) =>{
      })   
 
   //dispatch(selectItem(item.id));
-    console.log(newinventory)
+    
     dispatch(selectItem(newinventory))
 
     //setInventory(newinventory)
