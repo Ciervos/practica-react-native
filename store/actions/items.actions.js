@@ -4,3 +4,4 @@ export const selectItem = (newinventory) => ({
   type: SELECT_ITEM,
   newinventory: newinventory,
 });
+

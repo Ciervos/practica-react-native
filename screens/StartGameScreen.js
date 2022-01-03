@@ -10,7 +10,7 @@ import MsgModal from '../components/Modal/MsgModal';
 import ProfilePic from '../components/ProfilePic/profilePic';
 
 const StartGameScreen = ({navigation}) =>{
-  //const [inventory,setInventory] = useState([{id:221,name:'Libro Solar', image: items.sunbook,type: 'book',power: 'fire', selected:false},{id:222,name:'Libro Aqua', image: items.waterbook,type: 'book',power: 'water', selected:false},{id:223,name:'Libro Fuego', image: items.firebook,type: 'book',power: 'fire',selected:false}]);
+  
   const dispatch = useDispatch();
   const inventory = useSelector(state => state.items.items);
   const [backpack,setBackpack] = useState([])
@@ -51,11 +51,11 @@ const StartGameScreen = ({navigation}) =>{
       
      })   
 
-  //dispatch(selectItem(item.id));
+  
     
     dispatch(selectItem(newinventory))
 
-    //setInventory(newinventory)
+    
 
    } 
 

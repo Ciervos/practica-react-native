@@ -5,7 +5,7 @@ import defaultimg from '../../imgs/personajes/background/45.png';
 const initialState = {
   avatar: null,
   collection: [],
-  life: 2,
+  
 }
 
 const CharacterReducer = (state = initialState, action) => {
