@@ -8,15 +8,15 @@ const RulesScreen = () => {
 
   return (
     <View style={styles.container}>
-     <Text>Reglas:
-       - Te enfrentas a 3 monstruos
-       - Cada monstruo tiene sus débilidades
-       - Si usas el item correcto puedes avanzar sin consecuencias
-       - Si te equivocas, recibes daño 
-       - Item que uses, item que no puedes usar en la misma partida
-       - Si pierdes toda la vida, pierdes el juego.
+     <Text>Reglas:</Text>
+     <Text>- Te enfrentas a 3 monstruos </Text>
+     <Text>- Cada monstruo tiene sus débilidades</Text>
+     <Text>- Si usas el item correcto puedes avanzar sin consecuencias</Text>
+     <Text>- Si te equivocas, recibes daño </Text>
+     <Text>- Item que uses, item que no puedes usar en la misma partida</Text>
+     <Text>- Si pierdes toda la vida, pierdes el juego.</Text>
 
-     </Text>
+     
     </View>
     
   );

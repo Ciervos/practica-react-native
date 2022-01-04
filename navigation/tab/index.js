@@ -24,8 +24,8 @@ const TabNavigator = () => {
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={styles.item}>
-              <Ionicons name="md-home" size={24} color={focused ? colors.color1 : 'black'} />
-              <Text>Home</Text>
+              <Ionicons name="md-home" size={24} color={focused ? colors.color5 : colors.color2} />
+              <Text style={styles.text}>Home</Text>
             </View>
           )
         }}
@@ -36,8 +36,8 @@ const TabNavigator = () => {
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={styles.item}>
-              <MaterialCommunityIcons name="treasure-chest" size={24} color={focused ? colors.color1 : 'black'} />
-              <Text>Collection</Text>
+              <MaterialCommunityIcons name="treasure-chest" size={24} color={focused ? colors.color5 : colors.color2} />
+              <Text style={styles.text}>Collection</Text>
             </View>
           )
         }}
@@ -48,6 +48,7 @@ const TabNavigator = () => {
 
 const styles = StyleSheet.create({
   tabBar: {
+    backgroundColor: colors.color6,
     position: 'absolute',
     bottom: 25,
     left: 20,
@@ -64,6 +65,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  text:{
+    color: colors.color2, 
   }
 });
 

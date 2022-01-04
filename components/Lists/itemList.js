@@ -27,15 +27,15 @@ function ItemList({inventory,handleSelected}) {
             padding: 2,
             marginTop: 2,
             marginBottom: 2,
-            borderColor: colors.color6,
-            borderWidth: 1,
+            //borderColor: colors.color6,
+            //borderWidth: 1,
             width: 110,
           },
           selecteditem:{
-            backgroundColor: colors.color1,
+            backgroundColor: colors.color6,
           },
           unselecteditem:{
-            backgroundColor: colors.color6,
+            backgroundColor: colors.color1,
           },
           image:{
            width: 100,

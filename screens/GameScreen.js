@@ -111,17 +111,17 @@ const handleNextStep = (update) =>{
 }
 
 const resetItems =()=>{
+  
   const newinventory = ourItems.map((currItem)=>{
-    if(currItem.id.selected){
+    
     return{
       ...currItem,
       selected: false
     }
-   }
-
-   return currItem;
+   
    
   })
+  
   dispatch(selectItem(newinventory))
 }
 
@@ -156,20 +156,21 @@ const styles = StyleSheet.create({
 
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: colors.color1,
         alignItems: 'center',
         justifyContent: 'center',
         
       },
       subcontainer:{
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: colors.color1,
         alignItems: 'center',
         justifyContent: 'center',
         margin: 18,
       },
       guide:{
         fontFamily: 'PressStart2P',
+        color: colors.color4,
         
        },
        image:{
@@ -178,7 +179,8 @@ const styles = StyleSheet.create({
        },
        desc:{
         fontFamily: 'PressStart2P',
-        fontSize: 10
+        fontSize: 10,
+        color: colors.color4,
        },
        life:{
        height: 50,

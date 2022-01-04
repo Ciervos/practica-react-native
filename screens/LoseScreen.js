@@ -2,14 +2,17 @@ import React from 'react';
 import { StyleSheet, Text, View,Button} from 'react-native';
 import colors from '../constants/colors';
 
-const LoseScreen = () => {
+const LoseScreen = ({navigation}) => {
 
 
   return (
     <View style={styles.container}>
-     <Text>Derrota :(
-
-     </Text>
+     <Text>Derrota :( </Text>
+      <Button 
+       title="Volver"
+       onPress={()=>{navigation.navigate('Home')}}
+       color={colors.color2}
+       />
     </View>
     
   );

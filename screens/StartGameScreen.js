@@ -16,7 +16,7 @@ const StartGameScreen = ({navigation}) =>{
   const [backpack,setBackpack] = useState([])
   const [modalVisible,setModalVisible] = useState(false)
 
-   
+
   
 //Función Selecionar items
   const handleSelected = (item) =>{
@@ -56,18 +56,20 @@ const StartGameScreen = ({navigation}) =>{
   
     
     dispatch(selectItem(newinventory))
-
+    
     
 
    } 
 
   //Función boton
   const handlePress =()=>{
+    console.log(backpack)
     if(backpack.length!==3){
       setModalVisible(true)
     }else{
        
       navigation.navigate('Game')
+      setBackpack([])
     }
   }
 
@@ -101,7 +103,7 @@ const StartGameScreen = ({navigation}) =>{
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: colors.color1,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -114,6 +116,8 @@ const styles = StyleSheet.create({
   },
   guide:{
   fontFamily: 'PressStart2P',
+  fontSize: 10,
+  color: colors.color4,
   
  },
  

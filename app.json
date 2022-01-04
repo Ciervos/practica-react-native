@@ -1,8 +1,9 @@
 {
   "expo": {
-    "name": "proyectominidungeon",
-    "slug": "proyectominidungeon",
+    "name": "easydungeon",
+    "slug": "easydungeon",
     "version": "1.0.0",
+    "platforms":["ios","android"],
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -23,7 +24,10 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "permissions":[
+        "CAMERA"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"

@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   },
   modalContent: {
     padding: 30,
-    backgroundColor: colors.color6,
+    backgroundColor: colors.color4,
     alignSelf: 'center',
     alignItems: 'center',
     justifyContent: 'center',
