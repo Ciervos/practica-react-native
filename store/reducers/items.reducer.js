@@ -1,6 +1,6 @@
 
 import { ITEMS } from '../../data/items';
-import { SELECT_ITEM } from '../actions/items.actions';
+import { SELECT_ITEM} from '../actions/items.actions';
 
 const initialState = {
   items: ITEMS,

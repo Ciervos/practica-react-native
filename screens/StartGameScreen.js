@@ -15,6 +15,8 @@ const StartGameScreen = ({navigation}) =>{
   const inventory = useSelector(state => state.items.items);
   const [backpack,setBackpack] = useState([])
   const [modalVisible,setModalVisible] = useState(false)
+
+   
   
 //Función Selecionar items
   const handleSelected = (item) =>{

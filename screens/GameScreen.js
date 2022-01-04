@@ -65,7 +65,7 @@ const handleSelected = (item) =>{
   //se ve si su poder y tipo  coincide
   let coincide = 0
  currMob.weakness.map((weakness)=>{
-  console.log(weakness)
+ 
   if((weakness == item.power)||(weakness == item.type)){
    
    coincide = coincide + 1
@@ -81,15 +81,26 @@ const handleNextStep = (update) =>{
     if((fullLife)&&(currMob.power<2)){
       setFullLife(false)
       updateMob()
+      setCurrStage(currStage+1)
+      if(currStage==3){
+    
+        resetItems()
+        props.navigation.navigate('Victory')
+      
+       }
     }else{
-     console.log("perdiste") 
-     //restaurar el estado al default(items selected a false)
+     
+     resetItems()
+     props.navigation.navigate('Lose')
     }
   }else{
     //revisar stage
    if(currStage==3){
-    console.log("pantalla de Victoria")
-    //restaurar estado default
+    
+    resetItems()
+    props.navigation.navigate('Victory')
+    
+    
    }else{
     //sumar +1 al stage
     setCurrStage(currStage+1)
@@ -97,6 +108,21 @@ const handleNextStep = (update) =>{
     updateMob()
    } 
   }
+}
+
+const resetItems =()=>{
+  const newinventory = ourItems.map((currItem)=>{
+    if(currItem.id.selected){
+    return{
+      ...currItem,
+      selected: false
+    }
+   }
+
+   return currItem;
+   
+  })
+  dispatch(selectItem(newinventory))
 }
 
   return (
