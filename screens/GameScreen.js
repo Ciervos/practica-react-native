@@ -3,6 +3,7 @@ import React,{useState,useEffect} from 'react';
 import { StyleSheet, Text, View,TextInput,Image,Button} from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import {selectItem} from '../store/actions/items.actions';
+import {changeStats} from '../store/actions/character.actions';
 import ItemList from '../components/Lists/itemList';
 import { Ionicons } from '@expo/vector-icons';
 import colors from '../constants/colors';
@@ -12,6 +13,7 @@ const GameScreen = props => {
   const dispatch = useDispatch();
   const mobs = useSelector(state => state.enemies.enemies);
   const ourItems = useSelector(state => state.items.items);
+  const stats = useSelector(state => state.character);
   const [currMob,setCurrMob] = useState(null)
   const [currItems,setCurrItems] = useState(ourItems)
   const [fullLife,setFullLife] = useState(true)
@@ -91,6 +93,7 @@ const handleNextStep = (update) =>{
     }else{
      
      resetItems()
+     dispatch(changeStats(false,stats.lose+1,stats.win))
      props.navigation.navigate('Lose')
     }
   }else{
@@ -98,6 +101,7 @@ const handleNextStep = (update) =>{
    if(currStage==3){
     
     resetItems()
+    dispatch(changeStats(true,stats.win+1,stats.lose))
     props.navigation.navigate('Victory')
     
     
